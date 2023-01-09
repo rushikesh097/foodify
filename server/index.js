@@ -4,6 +4,7 @@ const cors = require("cors");
 const userRoute = require("./routes/user.route.js");
 const reviewRoute = require("./routes/review.route.js");
 const articleRoute = require("./routes/article.route.js");
+const recipeRoute = require("./routes/recipe.route.js");
 
 mongoose.set("strictQuery", false);
 const app = express();
@@ -17,6 +18,6 @@ app.use(express.json());
 app.use("/user", userRoute);
 app.use("/review", reviewRoute);
 app.use("/article", articleRoute);
-
+app.use("/recipe", recipeRoute);
 
 app.listen(5000, () => console.log("Server up and running..."));
