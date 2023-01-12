@@ -19,14 +19,15 @@ const Review = new Schema({
 
   date: {
     type: String,
-    required: true,
+    default: new Date().toISOString().slice(0, 10),
   },
 
   time: {
     type: String,
-    required: true,
+    default: new Date()
+      .toLocaleTimeString("en-US", { hour12: false })
+      .slice(0, 5),
   },
-
 });
 
 module.exports = mongoose.model("Reviews", Review);
