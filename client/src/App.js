@@ -4,20 +4,39 @@ import Navbar from './components/Navbar';
 import Recipes from './components/Recipes';
 import Articles from './components/Articles';
 import LogIn from './components/LogIn';
+import SignUp from './components/SignUp';
+import { useState } from 'react';
 
 
 function App() {
+  const [showLogIn,setShowLogIn] = useState(false);
+  const [showSignUp,setShowSignUp] = useState(false);
+  const [userId,setUserId] = useState("");
+
   return (
     <div>
       <Router>
-        <Navbar />
-      <Routes>
-      <Route path='/'/>
-      <Route path='/articles' element={<Articles/>}/>
-      <Route path='/recipes' element={<Recipes/>}/>
-      <Route path='/signin' element={<LogIn/>}/>
-      </Routes>
+        <Navbar setShowLogIn={setShowLogIn} userId={userId} setUserId={setUserId}/>
+        <Routes>
+          <Route path="/articles" element={<Articles />} />
+          <Route path="/recipes" element={<Recipes />} />
+          {/* <Route path="/signin" element={<LogIn />} /> */}
+        </Routes>
       </Router>
+      {showLogIn && (
+        <LogIn
+          setShowLogIn={setShowLogIn}
+          setShowSignUp={setShowSignUp}
+          setUserId={setUserId}
+        ></LogIn>
+      )}
+      {showSignUp && (
+        <SignUp
+          setShowSignUp={setShowSignUp}
+          setShowLogIn={setShowLogIn}
+          setUserId={setUserId}
+        ></SignUp>
+      )}
     </div>
   );
 }
