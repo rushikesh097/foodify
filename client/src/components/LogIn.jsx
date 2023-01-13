@@ -1,6 +1,6 @@
-import React from 'react'
+import React from "react";
 import { useState } from "react";
-import axios from 'axios';
+import axios from "axios";
 import {
   FILL_ALL_DATA,
   INVALID_EMAIL,
@@ -9,7 +9,6 @@ import {
 } from "../Data";
 
 const LogIn = (props) => {
-
   const [user, setUser] = useState({
     email: "",
     password: "",
@@ -28,8 +27,7 @@ const LogIn = (props) => {
     if (!PATTERN.test(user.email)) {
       setMsg(INVALID_EMAIL);
       return;
-    } 
-    else if (user.password !== "") {
+    } else if (user.password !== "") {
       axios
         .post("http://localhost:5000/user/validateuser", {
           email: user.email,
@@ -89,7 +87,7 @@ const LogIn = (props) => {
                     Password
                   </label>
                   <input
-                    className="shadow appearance-none border rounded w-full py-2 px-3 text-indigo-900 leading-tight focus:outline-none focus:border-indigo-900 disabled:bg-gray-300 cursor-not-allowed"
+                    className="shadow appearance-none border rounded w-full py-2 px-3 text-indigo-900 leading-tight focus:outline-none focus:border-indigo-900 disabled:bg-gray-300"
                     type={"password"}
                     onChange={handleChange}
                     name={"password"}
@@ -104,23 +102,31 @@ const LogIn = (props) => {
                 >
                   Log In
                 </button>
-                <p
-                  className="text-center w-full mt-2 p-2.5 
-                  flex-1 text-gray-800 hover:font-semibold cursor-pointer"
+                <button
+                  className="w-full mt-2 p-2.5 flex-1 text-black bg-gray-200 rounded-md outline-none ring-offset-2 ring-gray-500 focus:ring-2 font-semibold"
                   onClick={() => {
                     props.setShowLogIn(false);
-                    props.setShowSignUp(true);
                   }}
                 >
-                  Don't have account !
-                </p>
+                  Cancel
+                </button>
               </div>
+              <p
+                className="text-center w-full mt-2 p-2.5 
+                  flex-1 text-gray-800 hover:font-semibold cursor-pointer italic"
+                onClick={() => {
+                  props.setShowLogIn(false);
+                  props.setShowSignUp(true);
+                }}
+              >
+                Don't have an account !
+              </p>
             </div>
           </div>
         </div>
       </div>
     </div>
   );
-}
+};
 
-export default LogIn
+export default LogIn;

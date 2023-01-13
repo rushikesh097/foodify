@@ -18,8 +18,8 @@ function App() {
       <Router>
         <Navbar setShowLogIn={setShowLogIn} userId={userId} setUserId={setUserId}/>
         <Routes>
-          <Route path="/articles" element={<Articles />} />
-          <Route path="/recipes" element={<Recipes />} />
+          <Route path="/articles" element={<Articles userId={userId}/>} />
+          <Route path="/recipes" element={<Recipes userId={userId}/>} />
           {/* <Route path="/signin" element={<LogIn />} /> */}
         </Routes>
       </Router>

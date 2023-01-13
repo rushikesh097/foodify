@@ -147,17 +147,21 @@ const SignUp = (props) => {
                 >
                   Sign Up
                 </button>
-                <p
-                  className="text-center w-full mt-2 p-2.5 
-                  flex-1 text-gray-800 hover:font-semibold cursor-pointer"
-                  onClick={() => {
-                    props.setShowSignUp(false);
-                    props.setShowLogIn(true);
-                  }}
-                >
-                  Already have account !
-                </p>
+                <button className="w-full mt-2 p-2.5 flex-1 text-black bg-gray-200 rounded-md outline-none ring-offset-2 ring-gray-500 focus:ring-2 font-semibold"
+                onClick={()=>{props.setShowSignUp(false);}}>
+                  Cancel
+                </button>
               </div>
+              <p
+                className="text-center w-full mt-2 p-2.5 
+                  flex-1 text-gray-800 hover:font-semibold cursor-pointer italic"
+                onClick={() => {
+                  props.setShowSignUp(false);
+                  props.setShowLogIn(true);
+                }}
+              >
+                Already have an account !
+              </p>
             </div>
           </div>
         </div>
