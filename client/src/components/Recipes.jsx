@@ -12,7 +12,6 @@ const Recipes = (props) => {
       .get("http://localhost:5000/recipe/getallrecipe")
       .then((response) => {
         setRecipes(response.data);
-        console.log(response);
       })
       .catch((err) => {
         console.log(err);
@@ -23,7 +22,7 @@ const Recipes = (props) => {
     <div className="flex justify-center">
       <div>
         <div>
-          {props.userId === "" && (
+          {props.userId !== "" && (
             <Link
               to="/addrecipe"
               className="ml-10 w-3/2 mt-2 p-2.5 flex-1 text-white bg-green-600 rounded-md outline-none ring-offset-2 ring-green-500 focus:ring-2 font-semibold"
@@ -38,7 +37,7 @@ const Recipes = (props) => {
             <h1 className="text-lg">Loding....</h1>
           ) : (
             recipes.map((recipe) => {
-              return <RecipeCard recipe={recipe} setRecipe={props.setRecipe} />;
+              return <RecipeCard recipe={recipe} setRecipe={props.setRecipe} setRoute={props.setRoute} setMessage={props.setMessage}/>;
             })
           )}
         </div>

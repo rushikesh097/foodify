@@ -19,6 +19,8 @@ function App() {
   const [userId,setUserId] = useState("");
   const [recipe,setRecipe] = useState({})
   const [article,setArticle] = useState({})
+  const [route,setRoute] = useState("")
+  const [message,setMessage] = useState("")
 
   return (
     <div>
@@ -29,11 +31,11 @@ function App() {
           setUserId={setUserId}
         />
         <Routes>
-          <Route path="/" element={<Home userId={userId} recipe={recipe} setRecipe={setRecipe}/>} />
+          <Route path="/" element={<Home userId={userId} recipe={recipe} setRecipe={setRecipe} setRoute={setRoute} setMessage={setMessage}/>} />
           <Route path="/articles" element={<Articles userId={userId} setArticle={setArticle}/>} />
-          <Route path="/recipes" element={<Recipes userId={userId} setRecipe={setRecipe}/>} />
+          <Route path="/recipes" element={<Recipes userId={userId} setRecipe={setRecipe} setRoute={setRoute} setMessage={setMessage}/>} />
           <Route path="/addrecipe" element={<AddRecipe userId={userId} />} />
-          <Route path="/fullrecipe" element={<FullRecipe userId={userId} recipe={recipe}/>} />
+          <Route path="/fullrecipe" element={<FullRecipe userId={userId} recipe={recipe} route={route} message={message}/>} />
           <Route path="/addarticle" element={<AddArticle userId={userId}/>}/>
           <Route path="/fullarticle" element={<FullArticle userId={userId} article={article}/>}/>
           <Route path="/editarticle" element={<EditArticle userId={userId} article={article} setArticle={setArticle}/>}/>

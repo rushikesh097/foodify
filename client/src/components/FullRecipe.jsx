@@ -1,5 +1,5 @@
-import React from 'react'
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
 const FullRecipe = (props) => {
   return (
@@ -7,10 +7,15 @@ const FullRecipe = (props) => {
       <div>
         <div className="max-w-4xl px-10 my-4 py-6 bg-white rounded-lg shadow-md">
           <div className="flex justify-between items-center">
-            <Link to="/recipes" className='bg-red-400 px-2 py-1 rounded-md text-white cursor-pointer hover:bg-red-500'>
-              Back
-            </Link>
-            <span className="font-light text-gray-600">Foodify</span>
+            <p className="text-base md:text-sm text-green-500 font-bold">
+              &lt;{" "}
+              <Link
+                to={`${props.route}`}
+                className="text-base md:text-sm text-green-500 font-bold no-underline hover:underline"
+              >
+                {props.message}
+              </Link>
+            </p>
             <a className="px-2 py-1 bg-gray-600 text-gray-100 font-bold rounded hover:bg-green-500 cursor-pointer">
               {props.recipe.course}
             </a>
@@ -101,6 +106,6 @@ const FullRecipe = (props) => {
       </div>
     </div>
   );
-}
+};
 
-export default FullRecipe
+export default FullRecipe;
