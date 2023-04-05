@@ -6,15 +6,19 @@ import Articles from './components/Articles';
 import LogIn from './components/LogIn';
 import SignUp from './components/SignUp';
 import AddRecipe from './components/AddRecipe';
+import AddArticle from './components/AddArticle';
 import { useState } from 'react';
 import FullRecipe from './components/FullRecipe';
-
+import FullArticle from './components/FullArticle';
+import EditArticle from './components/EditArticle';
+import Home from './components/Home';
 
 function App() {
   const [showLogIn,setShowLogIn] = useState(false);
   const [showSignUp,setShowSignUp] = useState(false);
   const [userId,setUserId] = useState("");
   const [recipe,setRecipe] = useState({})
+  const [article,setArticle] = useState({})
 
   return (
     <div>
@@ -25,10 +29,14 @@ function App() {
           setUserId={setUserId}
         />
         <Routes>
-          <Route path="/articles" element={<Articles userId={userId} />} />
+          <Route path="/" element={<Home userId={userId} recipe={recipe} setRecipe={setRecipe}/>} />
+          <Route path="/articles" element={<Articles userId={userId} setArticle={setArticle}/>} />
           <Route path="/recipes" element={<Recipes userId={userId} setRecipe={setRecipe}/>} />
           <Route path="/addrecipe" element={<AddRecipe userId={userId} />} />
           <Route path="/fullrecipe" element={<FullRecipe userId={userId} recipe={recipe}/>} />
+          <Route path="/addarticle" element={<AddArticle userId={userId}/>}/>
+          <Route path="/fullarticle" element={<FullArticle userId={userId} article={article}/>}/>
+          <Route path="/editarticle" element={<EditArticle userId={userId} article={article} setArticle={setArticle}/>}/>
           {/* <Route path="/signin" element={<LogIn />} /> */}
         </Routes>
       </Router>

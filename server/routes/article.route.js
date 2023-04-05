@@ -18,6 +18,14 @@ router.post("/addarticle", async (req, res) => {
     .catch((err) => console.log(err));
 });
 
+router.get("/getallarticles", (req, res) => {
+  Article.find()
+    .then((result) => {
+      res.send(result);
+    })
+    .catch((err) => console.log(err));
+});
+
 
 router.put("/updatearticle", async (req, res) => {
   Article.findByIdAndUpdate(req.body._id, { $set: req.body })
