@@ -22,6 +22,7 @@ const Articles = (props) => {
     <>
     <div>
       <div>
+          <h1 className='text-3xl text-center mt-3 font-semibold'>Articles</h1>
           {props.userId !== "" && (
             <Link
               to="/addarticle"
@@ -47,7 +48,9 @@ const Articles = (props) => {
       </div>
     </div>
 
-    </div>
+
+  
+</div>
 
     </>
   );

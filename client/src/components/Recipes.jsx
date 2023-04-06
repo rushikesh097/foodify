@@ -21,6 +21,7 @@ const Recipes = (props) => {
   return (
     <div className="flex justify-center">
       <div>
+      <h1 className='text-3xl text-center mt-3 font-semibold'>Recipes</h1>
         <div>
           {props.userId !== "" && (
             <Link
