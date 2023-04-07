@@ -1,26 +1,30 @@
-import './App.css';
-import {BrowserRouter as Router,Route, Routes} from "react-router-dom";
-import Navbar from './components/Navbar';
-import Recipes from './components/Recipes';
-import Articles from './components/Articles';
-import LogIn from './components/LogIn';
-import SignUp from './components/SignUp';
-import AddRecipe from './components/AddRecipe';
-import AddArticle from './components/AddArticle';
-import { useState } from 'react';
-import FullRecipe from './components/FullRecipe';
-import FullArticle from './components/FullArticle';
-import EditArticle from './components/EditArticle';
-import Home from './components/Home';
+import "./App.css";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Recipes from "./components/Recipes";
+import Articles from "./components/Articles";
+import LogIn from "./components/LogIn";
+import SignUp from "./components/SignUp";
+import AddRecipe from "./components/AddRecipe";
+import AddArticle from "./components/AddArticle";
+import { useEffect, useState } from "react";
+import FullRecipe from "./components/FullRecipe";
+import FullArticle from "./components/FullArticle";
+import EditArticle from "./components/EditArticle";
+import Home from "./components/Home";
 
 function App() {
-  const [showLogIn,setShowLogIn] = useState(false);
-  const [showSignUp,setShowSignUp] = useState(false);
-  const [userId,setUserId] = useState("");
-  const [recipe,setRecipe] = useState({})
-  const [article,setArticle] = useState({})
-  const [route,setRoute] = useState("")
-  const [message,setMessage] = useState("")
+  const [showLogIn, setShowLogIn] = useState(false);
+  const [showSignUp, setShowSignUp] = useState(false);
+  const [userId, setUserId] = useState("");
+  const [recipe, setRecipe] = useState({});
+  const [article, setArticle] = useState({});
+
+  useEffect(() => {
+    if (sessionStorage.getItem("userId") !== null) {
+      setUserId(sessionStorage.getItem("userId"));
+    }
+  }, []);
 
   return (
     <div>
@@ -31,14 +35,40 @@ function App() {
           setUserId={setUserId}
         />
         <Routes>
-          <Route path="/" element={<Home userId={userId} recipe={recipe} setRecipe={setRecipe} setRoute={setRoute} setMessage={setMessage}/>} />
-          <Route path="/articles" element={<Articles userId={userId} setArticle={setArticle}/>} />
-          <Route path="/recipes" element={<Recipes userId={userId} setRecipe={setRecipe} setRoute={setRoute} setMessage={setMessage}/>} />
+          <Route
+            path="/"
+            element={
+              <Home userId={userId} recipe={recipe} setRecipe={setRecipe} />
+            }
+          />
+          <Route
+            path="/articles"
+            element={<Articles userId={userId} setArticle={setArticle} />}
+          />
+          <Route
+            path="/recipes"
+            element={<Recipes userId={userId} setRecipe={setRecipe} />}
+          />
           <Route path="/addrecipe" element={<AddRecipe userId={userId} />} />
-          <Route path="/fullrecipe" element={<FullRecipe userId={userId} recipe={recipe} route={route} message={message}/>} />
-          <Route path="/addarticle" element={<AddArticle userId={userId}/>}/>
-          <Route path="/fullarticle" element={<FullArticle userId={userId} article={article}/>}/>
-          <Route path="/editarticle" element={<EditArticle userId={userId} article={article} setArticle={setArticle}/>}/>
+          <Route
+            path="/fullrecipe"
+            element={<FullRecipe userId={userId} recipe={recipe} />}
+          />
+          <Route path="/addarticle" element={<AddArticle userId={userId} />} />
+          <Route
+            path="/fullarticle"
+            element={<FullArticle userId={userId} article={article} />}
+          />
+          <Route
+            path="/editarticle"
+            element={
+              <EditArticle
+                userId={userId}
+                article={article}
+                setArticle={setArticle}
+              />
+            }
+          />
           {/* <Route path="/signin" element={<LogIn />} /> */}
         </Routes>
       </Router>

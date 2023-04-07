@@ -32,7 +32,7 @@ const Navbar = (props) => {
             </svg>
           </button>
           <div className="hidden w-full md:block md:w-auto" id="navbar-default">
-            <ul className="flex flex-col p-4 mt-4 border rounded-lg  md:flex-row md:space-x-8 md:mt-0 md:text-base md:font-medium md:font-semibold md:border-0  ">
+            <ul className="flex flex-col p-4 mt-4 border rounded-lg  md:flex-row md:space-x-8 md:mt-0 md:text-base font-semibold md:border-0  ">
               <li>
                 <Link
                   to="/"
@@ -78,6 +78,7 @@ const Navbar = (props) => {
                       className="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0"
                       onClick={() => {
                         props.setUserId("");
+                        sessionStorage.removeItem("userId")
                       }}
                     >
                       Log Out

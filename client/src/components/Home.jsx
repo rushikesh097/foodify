@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { FILL_ALL_DATA } from "../Data";
 
@@ -8,12 +8,20 @@ const Home = (props) => {
   const [ingredients, setIngredients] = useState("");
   const [msg, setMsg] = useState("");
 
+  useEffect(() => {
+    let temp = sessionStorage.getItem("result");
+    if (temp !== null) {
+      let t = JSON.parse(temp);
+      setIngredients(sessionStorage.getItem("ingredients"));
+      setNames(t["result"]);
+    }
+  }, []);
+
   const getRecipeDetails = (name) => {
     axios
       .get(`http://localhost:5000/recipe/getrecipebyname/${name}`)
       .then((response) => {
-        props.setMessage("BACK TO HOME");
-        props.setRoute("/");
+        console.log(response.data[0]);
         props.setRecipe(response.data[0]);
       })
       .catch((err) => {
@@ -28,11 +36,13 @@ const Home = (props) => {
   };
 
   const getRecommendation = () => {
+    sessionStorage.setItem("ingredients", ingredients);
     if (ingredients !== "") {
       axios
         .get(`http://127.0.0.1:5000/${ingredients}`)
         .then((response) => {
           setNames(response.data["result"]);
+          sessionStorage.setItem("result", JSON.stringify(response.data));
         })
         .catch((err) => {
           console.log(err);
@@ -48,6 +58,7 @@ const Home = (props) => {
       <input
         className="appearance-none block w-1/2 bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4 mb-3"
         type="text"
+        defaultValue={ingredients}
         placeholder="Tomato, olive oil,..."
         onChange={handleChange}
       />
@@ -60,7 +71,7 @@ const Home = (props) => {
       </button>
       <div className="flex flex-col gap-2 mt-4">
         {names.length !== 0 ? (
-          names.map((name,key) => {
+          names.map((name, key) => {
             return (
               <div key={key}>
                 <div className="max-w-xl xl:max-w-5xl p-6 bg-white border border-gray-200 rounded-lg shadow ">
@@ -73,8 +84,9 @@ const Home = (props) => {
                     to={"/fullrecipe"}
                     className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-[#75c9b7] hover:bg-[#abd699]   focus:ring-4 focus:outline-none focus:ring-blue-300 "
                     onClick={() => {
-                      console.log("Hello");
                       getRecipeDetails(name);
+                      sessionStorage.setItem("message","BACK TO HOME");
+                      sessionStorage.setItem("route","/");
                     }}
                   >
                     Read more

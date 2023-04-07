@@ -39,6 +39,7 @@ const LogIn = (props) => {
             return;
           }
           props.setUserId(response.data._id);
+          sessionStorage.setItem("userId",response.data._id)
           props.setShowLogIn(false);
         })
         .catch((err) => {

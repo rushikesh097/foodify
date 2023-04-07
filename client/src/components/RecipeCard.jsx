@@ -17,8 +17,8 @@ const RecipeCard = (props) => {
         className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-[#75c9b7] hover:bg-[#abd699] focus:ring-4 focus:outline-none focus:ring-blue-300"
         onClick={() => {
           props.setRecipe(props.recipe);
-          props.setMessage("BACK TO RECIPES");
-          props.setRoute("/recipes");
+          sessionStorage.setItem("message","BACK TO RECIPES");
+          sessionStorage.setItem("route","/recipes")
         }}
       >
         Read more

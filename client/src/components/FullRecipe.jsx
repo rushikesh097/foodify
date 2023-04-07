@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 const FullRecipe = (props) => {
+  const [info, setInfo] = useState({
+    message: sessionStorage.getItem("message"),
+    route: sessionStorage.getItem("route"),
+  });
+
   return (
     <div className="flex items-center justify-center">
       <div>
@@ -10,10 +15,10 @@ const FullRecipe = (props) => {
             <p className="text-base md:text-sm text-green-500 font-bold">
               &lt;{" "}
               <Link
-                to={`${props.route}`}
+                to={`${info.route}`}
                 className="text-base md:text-sm text-green-500 font-bold no-underline hover:underline"
               >
-                {props.message}
+                {info.message}
               </Link>
             </p>
             <a className="px-2 py-1 bg-gray-600 text-gray-100 font-bold rounded hover:bg-green-500 cursor-pointer">

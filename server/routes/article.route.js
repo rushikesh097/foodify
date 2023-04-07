@@ -19,7 +19,7 @@ router.post("/addarticle", async (req, res) => {
 });
 
 router.get("/getallarticles", (req, res) => {
-  Article.find()
+  Article.find().sort({_id:-1})
     .then((result) => {
       res.send(result);
     })

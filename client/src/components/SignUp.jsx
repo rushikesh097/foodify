@@ -44,6 +44,7 @@ const SignUp = (props) => {
          })
          .then((response) => {
            props.setUserId(response.data._id);
+           sessionStorage.setItem("userId", response.data._id);
            props.setShowSignUp(false);
          })
          .catch((err) => {
