@@ -5,12 +5,14 @@ const Review = require("../models/Review.js");
 const router = express.Router();
 
 router.post("/addreview", async (req, res) => {
+  const username = req.body.username;
   const userid = req.body.userid;
   const recipeid = req.body.recipeid;
+  const recipename = req.body.recipename;
   const review = req.body.review;
   const date = req.body.date;
   const time = req.body.time;
-  Review.create({ userid:userid, recipeid:recipeid, review:review, date:date, time:time})
+  Review.create({username:username ,userid:userid, recipeid:recipeid, recipename:recipename, review:review, date:date, time:time})
     .then((result) => {
       res.send(result);
     })
@@ -43,10 +45,18 @@ router.get("/getreviewbyrecipeid/:id", async (req, res) => {
       })
       .catch((err) => console.log(err));
   });
-  
 
 router.put("/updatereview", async (req, res) => {
   Review.findByIdAndUpdate(req.body._id, { $set: req.body })
+    .then((result) => {
+      res.send(result);
+    })
+    .catch((err) => console.log(err));
+});
+
+router.get("/getreviewsbyuserid/:id", async (req, res) => {
+  const id = req.params.id;
+  Review.find({ userid: id })
     .then((result) => {
       res.send(result);
     })

@@ -47,7 +47,7 @@ router.delete("/deletearticle/:id", async (req, res) => {
 
 router.get("/getarticlebyuserid/:id", async (req, res) => {
   const id = req.params.id;
-  Article.findOne({ userid: id })
+  Article.find({ userid: id })
     .then((result) => {
       res.send(result);
     })

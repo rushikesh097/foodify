@@ -39,7 +39,11 @@ router.get("/getuserbyid/:id", async (req, res) => {
 });
 
 router.put("/updateuserdetails", async (req, res) => {
-  Users.findByIdAndUpdate(req.body._id, { $set: req.body })
+  const id = req.body._id;
+  const name = req.body.name;
+  const email = req.body.email;
+  const password = bcyrpt.hashSync(req.body.password, salt);
+  Users.findByIdAndUpdate(id, { $set: {_id:id,name:name, email:email, password:password} })
     .then((result) => {
       res.send(result);
     })

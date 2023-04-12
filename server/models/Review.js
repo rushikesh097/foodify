@@ -2,12 +2,22 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 const Review = new Schema({
+  username: {
+    type: String,
+    required: true,
+  },
+
   userid: {
     type: String,
     required: true,
   },
 
   recipeid: {
+    type: String,
+    required: true,
+  },
+
+  recipename: {
     type: String,
     required: true,
   },

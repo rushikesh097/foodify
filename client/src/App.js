@@ -12,6 +12,7 @@ import FullRecipe from "./components/FullRecipe";
 import FullArticle from "./components/FullArticle";
 import EditArticle from "./components/EditArticle";
 import Home from "./components/Home";
+import Profile from "./components/Profile";
 
 function App() {
   const [showLogIn, setShowLogIn] = useState(false);
@@ -19,10 +20,12 @@ function App() {
   const [userId, setUserId] = useState("");
   const [recipe, setRecipe] = useState({});
   const [article, setArticle] = useState({});
+  const [userName,setUserName] = useState({});
 
   useEffect(() => {
     if (sessionStorage.getItem("userId") !== null) {
       setUserId(sessionStorage.getItem("userId"));
+      setUserName(sessionStorage.getItem("username"));
     }
   }, []);
 
@@ -68,6 +71,10 @@ function App() {
                 setArticle={setArticle}
               />
             }
+          />
+          <Route
+            path="/profile"
+            element={<Profile setArticle={setArticle}/>}
           />
           {/* <Route path="/signin" element={<LogIn />} /> */}
         </Routes>

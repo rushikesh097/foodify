@@ -15,7 +15,7 @@ const ReviewCard = (props) => {
             className="flex-col py-2 mt-3 bg-white border-2 border-gray-200 sm:rounded-lg sm:shadow-sm md:w-2/3">
             <div className="flex flex-row justify-between md-10">
                 <div className="flex-col mt-1">
-                    <div className="flex items-center flex-1 px-4 font-bold leading-tight">{props.review.userid}
+                    <div className="flex items-center flex-1 px-4 font-bold leading-tight">{props.review.username}
                         <span className="ml-2 text-xs font-normal text-gray-500">{props.review.date} {props.review.time}</span>
                     </div>
                     

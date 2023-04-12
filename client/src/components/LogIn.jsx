@@ -40,6 +40,7 @@ const LogIn = (props) => {
           }
           props.setUserId(response.data._id);
           sessionStorage.setItem("userId",response.data._id)
+          sessionStorage.setItem("username",response.data.name);
           props.setShowLogIn(false);
         })
         .catch((err) => {
