@@ -54,9 +54,9 @@ router.get("/getarticlebyuserid/:id", async (req, res) => {
     .catch((err) => console.log(err));
 });
 
-router.get("/getarticlebytitle/:title", async (req, res) => {
-  const title = req.params.title;
-  Article.findOne({ title: title })
+router.get("/searcharticlebytitle/:title", async (req, res) => {
+
+  Article.find({title: {$regex: req.params.title, $options:"i"}})
     .then((result) => {
       res.send(result);
     })

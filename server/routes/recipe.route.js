@@ -42,4 +42,41 @@ router.get("/getrecipebyname/:recipeName", async (req, res) => {
 });
   
 
+router.get("/searchrecipebyoption/", async (req,res) => {
+  const {recipeName,cuisine,course,sortOrder} = req.query;
+  const queryObject = {};
+
+  if(recipeName!="none")
+  {
+    queryObject.recipeName = {$regex:recipeName, $options:"i"};
+  }
+
+  if(cuisine!="none")
+  {
+    queryObject.cuisine  = cuisine;
+  }
+
+  if(course!="none")
+  {
+    queryObject.course = course;
+  }
+
+  if(sortOrder=="none")
+  {
+    Recipe.find(queryObject).limit(100)
+    .then((result) => {
+      res.send(result);
+    })
+    .catch(err => console.log(err))
+  }
+  else
+  {
+    Recipe.find(queryObject).sort({totalTimeInMins:sortOrder}).limit(100)
+    .then((result) => {
+      res.send(result);
+    })
+    .catch(err => console.log(err))
+  }
+})
+
 module.exports = router;
