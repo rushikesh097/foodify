@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Reviews from "./Reviews";
+import recipeBG from "../recipe_page_bg2.jpg"
 
 const FullRecipe = (props) => {
   const [info, setInfo] = useState({
@@ -11,15 +12,15 @@ const FullRecipe = (props) => {
   const [showReviews,setShowReviews] = useState(false);
 
   return (
-    <div className="flex items-center justify-center">
+    <div className="flex items-center justify-center bg-cover bg-fixed min-h-screen" style={{backgroundImage: `url(${recipeBG})`}}>
       <div>
-        <div className="max-w-4xl px-10 my-4 py-6 bg-white rounded-lg shadow-md">
+        <div className="max-w-4xl px-10 py-6 mt-2 bg-white rounded-lg shadow-md">
           <div className="flex justify-between items-center">
-            <p className="text-base md:text-sm text-green-500 font-bold">
+            <p className="text-base md:text-sm text-yellow-500 font-bold">
               &lt;{" "}
               <Link
                 to={`${info.route}`}
-                className="text-base md:text-sm text-green-500 font-bold no-underline hover:underline"
+                className="text-base md:text-sm text-yellow-500 font-bold no-underline hover:underline"
               >
                 {info.message}
               </Link>
@@ -96,26 +97,30 @@ const FullRecipe = (props) => {
             </div>
           </div>
           <div className="flex justify-between items-center mt-4 mb-4">
-            <button type="button"
-              className="inline-flex items-center px-4 py-2 text-sm text-center rounded text-white bg-[#75c9b7] hover:bg-[#abd699]"
-              onClick={()=>setShowReviews(!showReviews)}
-              >
-              Reviews
-
-            <svg
-                aria-hidden="true"
-                className="w-4 h-4 ml-2 -mr-1"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
+            <button onClick={()=>setShowReviews(!showReviews)}
+              className="relative items-center justify-start inline-block px-3 py-2 overflow-hidden font-bold rounded-md group ">
+              <span className="w-32 h-32 rotate-45 translate-x-12 -translate-y-2 absolute left-0 top-0 bg-opacity-10 "></span>
+              <span className="absolute top-0 left-0 w-48 h-48 -mt-1 transition-all duration-500 ease-in-out rotate-45 -translate-x-56 -translate-y-24 bg-black opacity-100 group-hover:-translate-x-8"></span>
+              <span className="inline-flex items-center relative w-full text-left text-black transition-colors duration-200 ease-in-out group-hover:text-white">
+                Reviews
+                <svg
+                  aria-hidden="true"
+                  className="w-4 h-4 ml-2 -mr-1"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg"
                 >
-                <path
-                    fillRule="evenodd"
+                  <path
+                    fill-rule="evenodd"
                     d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                    clipRule="evenodd"
-                ></path>
-            </svg>
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+              </span>
+              <span className="absolute inset-0 border border-black rounded-md"></span>
             </button>
+
+
             <div>
               <a className="flex items-center">
                 <img

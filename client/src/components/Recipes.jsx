@@ -3,6 +3,9 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import RecipeCard from "./RecipeCard";
 import SearchRecipe from "./SearchRecipe";
+import recipeBG from "../recipe_page_bg2.jpg"
+import NoResultFound from "./NoResultFound";
+
 
 const Recipes = (props) => {
   
@@ -33,7 +36,7 @@ const Recipes = (props) => {
   }, []);
 
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-center bg-fixed bg-cover bg-repeat min-h-screen" style={{ backgroundImage: `url(${recipeBG})`}}>
       <div>
       <h1 className='text-3xl text-center mt-3 font-semibold'>Recipes</h1>
         <div>   
@@ -49,23 +52,17 @@ const Recipes = (props) => {
         </div> 
         
         {searchComponent && <SearchRecipe getAllRecipe={getAllRecipe} setRecipes={setRecipes} resetFilterTimeout={resetFilterTimeout}/>}
-        <div className="flex flex-col gap-3 my-6">
           {recipes.length === 0 ? (
-            <div className="relative flex items-center justify-center">
-            <h1 className="text-2xl font-medium py-8 px-5">Sorry! No results found</h1>
-            <div>
-            <button onClick={getAllRecipe} className="bg-gradient-to-r  text-#75c9b7 bg-[white] hover:bg-[#dfdddd] font-semibold px-6 py-3 rounded-md">
-            Go back
-            </button>
-            </div>
-            </div>
+            <NoResultFound/>
           ) : (
-            recipes.map((recipe) => {
+            
+            <div className="my-10 lg:mx-20 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-10">
+            {recipes.map((recipe) => {
               return <RecipeCard recipe={recipe} setRecipe={props.setRecipe} setRoute={props.setRoute} setMessage={props.setMessage}/>;
-            })
+            })}
+            </div>
           )}
         </div>
-      </div>
     </div>
   );
 }

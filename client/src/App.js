@@ -30,13 +30,15 @@ function App() {
   }, []);
 
   return (
+    <div className="min-h-full  min-w-full backdrop-blur-md bg-white/20">
+      
     <div>
       <Router>
         <Navbar
           setShowLogIn={setShowLogIn}
           userId={userId}
           setUserId={setUserId}
-        />
+          />
         <Routes>
           <Route
             path="/"
@@ -47,53 +49,54 @@ function App() {
           <Route
             path="/articles"
             element={<Articles userId={userId} setArticle={setArticle} />}
-          />
+            />
           <Route
             path="/recipes"
             element={<Recipes userId={userId} setRecipe={setRecipe} />}
-          />
+            />
           <Route path="/addrecipe" element={<AddRecipe userId={userId} />} />
           <Route
             path="/fullrecipe"
             element={<FullRecipe userId={userId} recipe={recipe} />}
-          />
+            />
           <Route path="/addarticle" element={<AddArticle userId={userId} />} />
           <Route
             path="/fullarticle"
             element={<FullArticle userId={userId} article={article} />}
-          />
+            />
           <Route
             path="/editarticle"
             element={
               <EditArticle
-                userId={userId}
-                article={article}
-                setArticle={setArticle}
+              userId={userId}
+              article={article}
+              setArticle={setArticle}
               />
             }
           />
           <Route
             path="/profile"
             element={<Profile setArticle={setArticle}/>}
-          />
+            />
           {/* <Route path="/signin" element={<LogIn />} /> */}
         </Routes>
       </Router>
       {showLogIn && (
         <LogIn
-          setShowLogIn={setShowLogIn}
-          setShowSignUp={setShowSignUp}
-          setUserId={setUserId}
+        setShowLogIn={setShowLogIn}
+        setShowSignUp={setShowSignUp}
+        setUserId={setUserId}
         ></LogIn>
-      )}
+        )}
       {showSignUp && (
         <SignUp
-          setShowSignUp={setShowSignUp}
+        setShowSignUp={setShowSignUp}
           setShowLogIn={setShowLogIn}
           setUserId={setUserId}
-        ></SignUp>
-      )}
+          ></SignUp>
+          )}
     </div>
+  </div>
   );
 }
 

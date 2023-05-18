@@ -138,8 +138,8 @@ const SearchRecipe = (props) => {
 
 
   return (
-    <div className='mt-6'>
-        <div className="w-full shadow p-5 rounded-lg bg-white">
+    <div className='mt-6 lg:mx-20'>
+        <div className="w-full shadow p-5 rounded-lg bg-white ">
   <div className="relative">
 	<div className="absolute flex items-center ml-2 h-full">
 	  <svg className="w-4 h-4 fill-current text-primary-gray-dark" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -150,11 +150,14 @@ const SearchRecipe = (props) => {
 	<div className="flex justify-between">
 
 	<input type="search" name="recipeName" onChange={handleChange} placeholder="Search by Cuisine, Servings, Cook Time..." className="px-8 py-3 rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm w-full"/>
-	<button type="button"
-    className="inline-flex items-center px-6 py-3 ml-2 text-md font-bold text-center rounded text-white bg-[#75c9b7] hover:bg-[#abd699]"
-    onClick={getSearchedFilter}
-    >Search
-    </button>  
+	
+
+	<button onClick={getSearchedFilter} className="inline-flex items-center relative text-center justify-start px-6 py-3 ml-2 overflow-hidden font-bold rounded-md group ">
+	<span className="w-32 h-32 rotate-45 translate-x-12 -translate-y-2 absolute left-0 top-0 bg-opacity-10 "></span>
+	<span className="absolute top-0 left-0 w-48 h-48 -mt-1 transition-all duration-500 ease-in-out rotate-45 -translate-x-56 -translate-y-24 bg-black opacity-100 group-hover:-translate-x-8"></span>
+	<span className="relative w-full text-left text-black transition-colors duration-200 ease-in-out group-hover:text-white">Search</span>
+	<span className="absolute inset-0 border border-black rounded-md"></span>
+	</button>
 	</div>
 	</div>
 
@@ -175,6 +178,8 @@ const SearchRecipe = (props) => {
 		  <option value="1">Time-Low to</option>
 		  <option value="-1">Time-High to</option>
 		</select>
+
+		
 
 		<select className="px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm" name="course" onChange={handleChange}>
 		  <option value="none">Course Type</option>

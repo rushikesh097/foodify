@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const Navbar = (props) => {
   return (
     <>
-      <nav className="sticky top-0 z-30 backdrop-blur-sm bg-white/20 bg-white border-gray-200 px-2 sm:px-4 py-2.5 shadow-xl">
+      <nav className="sticky top-0 z-30 backdrop-blur-sm border-gray-200 px-2 sm:px-4 py-2.5 shadow-xl">
         <div className="container flex flex-wrap items-center mx-auto justify-around">
         <a className="flex items-center">
           <span className="self-center text-2xl font-bold whitespace-nowrap text-[#16123F]">FOODIFY</span>

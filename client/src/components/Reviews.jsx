@@ -8,7 +8,6 @@ const Reviews = (props) => {
 
     const [addReview, setAddReview] = useState("");
     const [msg,setMsg] = useState("");
-    const [showSaveModal, setSaveShowModal] = useState(false);
     
     const [reviews,setReviews] = useState([]);
 
@@ -90,9 +89,7 @@ const Reviews = (props) => {
                 })
                 )}
         </div>
-        {showSaveModal && (
-            <SaveModal setSaveShowModal={setSaveShowModal}></SaveModal>
-        )}
+        
     </div>
   )
 }
