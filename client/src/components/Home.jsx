@@ -1,11 +1,11 @@
 import axios from "axios";
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FILL_ALL_DATA } from "../Data";
-import {motion,useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 
-import burger from "../burger-french-fries-plate.jpg"
-import footerbg from "../egg_fries_footer.jpg"
+import burger from "../burger-french-fries-plate.jpg";
+import footerbg from "../egg_fries_footer.jpg";
 
 const Home = (props) => {
   const [names, setNames] = useState([]);
@@ -18,7 +18,7 @@ const Home = (props) => {
         <svg
           id="myImg"
           className="mainimage"
-          fill="#6909c7"
+          fill="#facc15"
           role="img"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 1000 1000"
@@ -34,7 +34,7 @@ const Home = (props) => {
         <svg
           id="myImg"
           class="mainimage"
-          fill="#6909c7"
+          fill="#facc15"
           role="img"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 1000 1000"
@@ -54,7 +54,7 @@ const Home = (props) => {
           fill="none"
           viewBox="0 0 24 24"
           strokeWidth={1.5}
-          stroke="currentColor"
+          stroke="#facc15"
           className="w-6 h-6"
         >
           <path
@@ -89,20 +89,20 @@ const Home = (props) => {
   const getRecommendation = () => {
     if (ingredients !== "") {
       axios
-      .get(`http://127.0.0.1:5000/${ingredients}`)
-      .then((response) => {
-        setNames(response.data["result"]);
-      })
-      .catch((err) => {
-        console.log(err);
-        setMsg(err.message);
-      });
+        .get(`http://127.0.0.1:5000/${ingredients}`)
+        .then((response) => {
+          setNames(response.data["result"]);
+        })
+        .catch((err) => {
+          console.log(err);
+          setMsg(err.message);
+        });
       return;
     }
     setMsg(FILL_ALL_DATA);
   };
-  let {scrollY} = useScroll();
-  let y =  useTransform(scrollY, [0,250],["0%","50%"]);
+  let { scrollY } = useScroll();
+  let y = useTransform(scrollY, [0, 250], ["0%", "50%"]);
 
   return (
     <div>
@@ -151,13 +151,11 @@ const Home = (props) => {
       <section className="py-14">
         <div className="max-w-screen-xl mx-auto px-4 text-gray-600 md:px-8">
           <div className="max-w-xl space-y-3">
-            <h3 className="text-indigo-600 font-semibold">Features</h3>
+            <h3 className="text-yellow-600 font-semibold">Features</h3>
             <p className="text-gray-800 text-3xl font-semibold sm:text-4xl">
               Social media for food lovers
             </p>
-            <p>
-              Many Features like...
-            </p>
+            <p>Many Features like...</p>
           </div>
           <div className="mt-12">
             <ul className="grid gap-x-12 divide-y [&>.feature-1]:pl-0 sm:grid-cols-2 sm:gap-y-8 sm:divide-y-0 lg:divide-x lg:grid-cols-3 lg:gap-x-0">
