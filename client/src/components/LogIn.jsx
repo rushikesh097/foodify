@@ -63,7 +63,9 @@ const LogIn = (props) => {
           <div className="mt-3 sm:flex">
             <div className="mt-2 text-center sm:ml-4 sm:text-left">
               <div className="text-center">
-                <h4 className="text-lg font-medium text-gray-800">Log In</h4>
+                <h4 className="text-gray-800 text-2xl font-bold sm:text-3xl mb-16">
+                  Log in to your account
+                </h4>
               </div>
               <form className="w-96">
                 <div className="mb-6 mt-5">
@@ -74,7 +76,7 @@ const LogIn = (props) => {
                     E-Mail
                   </label>
                   <input
-                    className="shadow appearance-none border rounded w-full py-2 px-3 text-indigo-900 leading-tight focus:outline-none focus:border-indigo-900 disabled:bg-gray-300"
+                    className="appearance-none w-full pr-12 pl-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
                     type={"email"}
                     name={"email"}
                     onChange={handleChange}
@@ -89,7 +91,8 @@ const LogIn = (props) => {
                     Password
                   </label>
                   <input
-                    className="shadow appearance-none border rounded w-full py-2 px-3 text-indigo-900 leading-tight focus:outline-none focus:border-indigo-900 disabled:bg-gray-300"
+                    className="appearance-none w-full pr-12 pl-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
+                    placeholder="Password"
                     type={"password"}
                     onChange={handleChange}
                     name={"password"}

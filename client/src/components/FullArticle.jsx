@@ -1,20 +1,23 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import recipeBG from "../recipe_page_bg2.jpg";
 
 const FullArticle = (props) => {
-  console.log(props.article);
   return (
-    <div className="mt-10 flex items-center justify-center">
+    <div
+      className="flex items-center justify-center bg-cover bg-fixed min-h-screen"
+      style={{ backgroundImage: `url(${recipeBG})` }}
+    >
       <div>
-        <div className="max-w-4xl px-10 py-6 bg-white rounded-lg shadow-md">
+        <div className="max-w-4xl px-10 py-6 bg-white rounded-lg shadow-md my-10">
           <div className="container w-full md:max-w-3xl mx-auto pt-10">
             <div className="w-full px-4 md:px-6 text-xl text-gray-800 leading-normal">
               <div className="font-sans">
-                <p className="text-base md:text-sm text-green-500 font-bold">
+                <p className="text-base md:text-sm text-yellow-500 font-bold">
                   &lt;{" "}
                   <Link
                     to="/articles"
-                    className="text-base md:text-sm text-green-500 font-bold no-underline hover:underline"
+                    className="text-base md:text-sm text-yellow-500 font-bold no-underline hover:underline"
                   >
                     BACK TO ARTICLES
                   </Link>

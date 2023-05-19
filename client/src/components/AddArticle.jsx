@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from "axios";
 import { FILL_ALL_DATA } from "../Data";
 import { Link } from "react-router-dom";
+import recipeBG from "../recipe_page_bg2.jpg";
 
 const SaveModal = (props) => {
     return (
@@ -100,69 +101,71 @@ const AddArticle = (props) => {
 
 
   return (
-    <div className="mx-10">
-      <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col my-2 mx-20">
-        <h1 className="text-3xl font-semibold mb-8">Add New Article</h1>
-        <div className="-mx-3 md:flex mb-6">
-          <div className="md:w-full px-3">
-            <label className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">
-              Title
-            </label>
-            <input
-              className="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4 mb-3"
-              name="title"
-              type="text"
-              placeholder="5 Tips to Preserving vegetables.."
-              onChange={handleChange}
-            />
+    <div
+      className="bg-fixed bg-cover bg-repeat min-h-screen"
+      style={{ backgroundImage: `url(${recipeBG})` }}
+    >
+      <h1 className="text-3xl bg-yellow-300 py-5 text-center font-semibold mb-8">Add New Article</h1>
+      <div>
+        <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col mx-32">
+          <div className="-mx-3 md:flex mb-6">
+            <div className="md:w-full px-3">
+              <label className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">
+                Title
+              </label>
+              <input
+                className="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4 mb-3"
+                name="title"
+                type="text"
+                placeholder="5 Tips to Preserving vegetables.."
+                onChange={handleChange}
+              />
+            </div>
           </div>
-        </div>
-
-        <div className="-mx-3 md:flex mb-6">
-          <div className="md:w-full px-3">
-            <label className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">
-              Tags
-            </label>
-            <input
-              className="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4 mb-3"
-              name="tags"
-              type="text"
-              placeholder="vegetables,dairy,health..."
-              onChange={handleChange}
-            />
+          <div className="-mx-3 md:flex mb-6">
+            <div className="md:w-full px-3">
+              <label className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">
+                Tags
+              </label>
+              <input
+                className="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4 mb-3"
+                name="tags"
+                type="text"
+                placeholder="vegetables,dairy,health..."
+                onChange={handleChange}
+              />
+            </div>
           </div>
-        </div>
 
-        <div className="-mx-3 md:flex mb-6">
-          <div className="md:w-full px-3">
-            <label className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">
-              Description
-            </label>
-            <textarea
-              rows="4"
-              className="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4 mb-3"
-              name="description"
-              type="text"
-              placeholder="Write description on article"
-              onChange={handleChange}
-            />
+          <div className="-mx-3 md:flex mb-6">
+            <div className="md:w-full px-3">
+              <label className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">
+                Description
+              </label>
+              <textarea
+                rows="4"
+                className="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4 mb-3"
+                name="description"
+                type="text"
+                placeholder="Write description on article"
+                onChange={handleChange}
+              />
+            </div>
           </div>
+          <p className="text-sm text-red-600 italic text-center mt-1">{msg}</p>
+          <button
+            onClick={onSave}
+            className="ml-auto mr-auto w-1/4 mt-5 p-2.5 flex-1 text-white bg-green-600 rounded-md outline-none ring-offset-2 ring-green-500 focus:ring-2 font-semibold"
+          >
+            Post
+          </button>
         </div>
-
-
-        <p className="text-sm text-red-600 italic text-center mt-1">{msg}</p>
-        <button
-          onClick={onSave}
-          className="ml-auto mr-auto w-1/4 mt-5 p-2.5 flex-1 text-white bg-green-600 rounded-md outline-none ring-offset-2 ring-green-500 focus:ring-2 font-semibold"
-        >
-          Post
-        </button>
       </div>
       {showSaveModal && (
         <SaveModal setSaveShowModal={setSaveShowModal}></SaveModal>
       )}
     </div>
-  )
+  );
 }
 
 export default AddArticle

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { FILL_ALL_DATA } from "../Data";
 import { Link } from "react-router-dom";
+import recipeBG from "../recipe_page_bg2.jpg";
 
 const SaveModal = (props) => {
   return (
@@ -221,135 +222,143 @@ const AddRecipe = (props) => {
   };
 
   return (
-    <div className="mx-10">
-      <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col my-2 mx-20">
-        <h1 className="text-3xl font-semibold mb-8">Add New Recipe</h1>
-        <div className="-mx-3 md:flex mb-6">
-          <div className="md:w-full px-3">
-            <label className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">
-              Name
-            </label>
-            <input
-              className="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4 mb-3"
-              name="recipeName"
-              type="text"
-              placeholder="Chole Bhature"
-              onChange={handleChange}
-            />
-          </div>
-        </div>
-        <div className="-mx-3 md:flex mb-6">
-          <div className="md:w-full px-3">
-            <label className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">
-              Ingredients
-            </label>
-            <input
-              className="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4 mb-3"
-              name="ingredients"
-              type="text"
-              placeholder="Tomato, Potato,.."
-              onChange={handleChange}
-            />
-          </div>
-        </div>
-        <div className="-mx-3 md:flex mb-6">
-          <div className="md:w-1/2 px-3 mb-6 md:mb-0">
-            <label className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">
-              Prep. Time
-            </label>
-            <input
-              className="appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3"
-              name="prepTimeInMins"
-              type="number"
-              placeholder="10"
-              onChange={handleChange}
-            />
-            <p className="text-red text-xs italic">in min.</p>
-          </div>
-          <div className="md:w-1/2 px-3 mb-6 md:mb-0">
-            <label className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">
-              Cook Time
-            </label>
-            <input
-              className="appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3"
-              name="cookTimeInMins"
-              type="number"
-              onChange={handleChange}
-              placeholder="10"
-            />
-            <p className="text-red text-xs italic">in min.</p>
-          </div>
-        </div>
-
-        <div className="my-4">
-          <label className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">
-            Procedure
-          </label>
-          <textarea
-            name="instructions"
-            placeholder="Take a cup of water..."
-            onChange={handleChange}
-            className="w-full h-64 bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg  border border-grey-lighter"
-          ></textarea>
-        </div>
-        <div className="-mx-3 md:flex mb-2">
-          <div className="md:w-1/2 px-3">
-            <label className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">
-              Course Type
-            </label>
-            <div className="relative">
-              <select
-                className="block appearance-none w-full bg-grey-lighter border border-grey-lighter text-grey-darker py-3 px-4 pr-8 rounded"
-                name="course"
+    <div
+      className="bg-fixed bg-cover bg-repeat min-h-screen"
+      style={{ backgroundImage: `url(${recipeBG})` }}
+    >
+      <h1 className="text-3xl text-center bg-yellow-300 py-5 font-semibold mb-8">
+        Add New Recipe
+      </h1>
+      <div>
+        <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-10 flex flex-col mx-20">
+          <div className="-mx-3 md:flex mb-6">
+            <div className="md:w-full px-3">
+              <label className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">
+                Name
+              </label>
+              <input
+                className="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4 mb-3"
+                name="recipeName"
+                type="text"
+                placeholder="Chole Bhature"
                 onChange={handleChange}
-              >
-                {courses.map((v, k) => (
-                  <option className="cursor-pointer" value={v} key={k}>
-                    {v}
-                  </option>
-                ))}
-              </select>
+              />
             </div>
           </div>
-          <div className="md:w-1/2 px-3">
-            <label className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">
-              Cuisine
-            </label>
-            <div className="relative">
-              <select
-                className="block appearance-none w-full bg-grey-lighter border border-grey-lighter text-grey-darker py-3 px-4 pr-8 rounded"
-                name="cuisine"
+          <div className="-mx-3 md:flex mb-6">
+            <div className="md:w-full px-3">
+              <label className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">
+                Ingredients
+              </label>
+              <input
+                className="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4 mb-3"
+                name="ingredients"
+                type="text"
+                placeholder="Tomato, Potato,.."
                 onChange={handleChange}
-              >
-                {cuisins.map((v, k) => (
-                  <option className="cursor-pointer" value={v} key={k}>
-                    {v}
-                  </option>
-                ))}
-              </select>
+              />
             </div>
           </div>
-          <div className="md:w-1/2 px-3">
-            <label className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">
-              Servings
-            </label>
-            <input
-              className="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4"
-              name="servings"
-              type="number"
-              placeholder="1"
-              onChange={handleChange}
-            />
+          <div className="-mx-3 md:flex mb-6">
+            <div className="md:w-1/2 px-3 mb-6 md:mb-0">
+              <label className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">
+                Prep. Time
+              </label>
+              <input
+                className="appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3"
+                name="prepTimeInMins"
+                type="number"
+                placeholder="10"
+                onChange={handleChange}
+              />
+              <p className="text-red text-xs italic">in min.</p>
+            </div>
+            <div className="md:w-1/2 px-3 mb-6 md:mb-0">
+              <label className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">
+                Cook Time
+              </label>
+              <input
+                className="appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3"
+                name="cookTimeInMins"
+                type="number"
+                onChange={handleChange}
+                placeholder="10"
+              />
+              <p className="text-red text-xs italic">in min.</p>
+            </div>
           </div>
-        </div>
 
-        <p className="text-sm text-red-600 italic text-center mt-1">{msg}</p>
-        <button
-          onClick={onSave}
-          className="ml-auto mr-auto w-1/4 mt-5 p-2.5 flex-1 text-white bg-green-600 rounded-md outline-none ring-offset-2 ring-green-500 focus:ring-2 font-semibold"
-        >
-          Save
-        </button>
+          <div className="my-4">
+            <label className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">
+              Procedure
+            </label>
+            <textarea
+              name="instructions"
+              placeholder="Take a cup of water..."
+              onChange={handleChange}
+              className="w-full h-64 bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg  border border-grey-lighter"
+            ></textarea>
+          </div>
+          <div className="-mx-3 md:flex mb-2">
+            <div className="md:w-1/2 px-3">
+              <label className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">
+                Course Type
+              </label>
+              <div className="relative">
+                <select
+                  className="block appearance-none w-full bg-grey-lighter border border-grey-lighter text-grey-darker py-3 px-4 pr-8 rounded"
+                  name="course"
+                  onChange={handleChange}
+                >
+                  {courses.map((v, k) => (
+                    <option className="cursor-pointer" value={v} key={k}>
+                      {v}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
+            <div className="md:w-1/2 px-3">
+              <label className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">
+                Cuisine
+              </label>
+              <div className="relative">
+                <select
+                  className="block appearance-none w-full bg-grey-lighter border border-grey-lighter text-grey-darker py-3 px-4 pr-8 rounded"
+                  name="cuisine"
+                  onChange={handleChange}
+                >
+                  {cuisins.map((v, k) => (
+                    <option className="cursor-pointer" value={v} key={k}>
+                      {v}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
+            <div className="md:w-1/2 px-3">
+              <label className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">
+                Servings
+              </label>
+              <input
+                className="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4"
+                name="servings"
+                type="number"
+                placeholder="1"
+                onChange={handleChange}
+              />
+            </div>
+          </div>
+
+          <p className="text-sm text-red-600 italic text-center mt-1">{msg}</p>
+          <button
+            onClick={onSave}
+            className="ml-auto mr-auto w-1/4 mt-5 p-2.5 flex-1 text-white bg-green-600 rounded-md outline-none ring-offset-2 ring-green-500 focus:ring-2 font-semibold hover:bg-black"
+          >
+            Save
+          </button>
+        </div>
+        <div className="w-full h-10"></div>
       </div>
       {showSaveModal && (
         <SaveModal setSaveShowModal={setSaveShowModal}></SaveModal>

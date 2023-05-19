@@ -68,7 +68,9 @@ const SignUp = (props) => {
           <div className="mt-3 sm:flex">
             <div className="mt-2 text-center sm:ml-4 sm:text-left">
               <div className="text-center">
-                <h4 className="text-lg font-medium text-gray-800">Sign Up</h4>
+                <h4 className="text-gray-800 text-2xl font-bold sm:text-3xl mb-16">
+                  Sign Up here !
+                </h4>
               </div>
               <form className="w-96">
                 <div className="mb-6 mt-5">
@@ -79,7 +81,7 @@ const SignUp = (props) => {
                     Name
                   </label>
                   <input
-                    className="shadow appearance-none border rounded w-full py-2 px-3 text-indigo-900 leading-tight focus:outline-none focus:border-indigo-900 disabled:bg-gray-300"
+                    className="appearance-none w-full pr-12 pl-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
                     type={"text"}
                     name={"name"}
                     onChange={handleChange}
@@ -94,7 +96,7 @@ const SignUp = (props) => {
                     E-Mail
                   </label>
                   <input
-                    className="shadow appearance-none border rounded w-full py-2 px-3 text-indigo-900 leading-tight focus:outline-none focus:border-indigo-900 disabled:bg-gray-300"
+                    className="shadow-sm appearance-none rounded-lg w-full pr-12 pl-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600"
                     type={"email"}
                     name={"email"}
                     onChange={handleChange}
@@ -109,8 +111,7 @@ const SignUp = (props) => {
                     Gender
                   </label>
                   <select
-                    className="shadow appearance-none border rounded w-full py-2 px-3 text-indigo-900 leading-tight focus:outline-none
-                    cursor-pointer focus:border-indigo-900"
+                    className="appearance-none w-full pr-12 pl-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
                     name="gender"
                     onChange={handleChange}
                   >
@@ -133,7 +134,7 @@ const SignUp = (props) => {
                     Password
                   </label>
                   <input
-                    className="shadow appearance-none border rounded w-full py-2 px-3 text-indigo-900 leading-tight focus:outline-none focus:border-indigo-900 disabled:bg-gray-300"
+                    className="shadow-sm appearance-none rounded-lg w-full pr-12 pl-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600"
                     type={"password"}
                     onChange={handleChange}
                     name={"password"}
@@ -149,8 +150,12 @@ const SignUp = (props) => {
                 >
                   Sign Up
                 </button>
-                <button className="w-full mt-2 p-2.5 flex-1 text-black bg-gray-200 rounded-md outline-none ring-offset-2 ring-gray-500 focus:ring-2 font-semibold"
-                onClick={()=>{props.setShowSignUp(false);}}>
+                <button
+                  className="w-full mt-2 p-2.5 flex-1 text-black bg-gray-200 rounded-md outline-none ring-offset-2 ring-gray-500 focus:ring-2 font-semibold"
+                  onClick={() => {
+                    props.setShowSignUp(false);
+                  }}
+                >
                   Cancel
                 </button>
               </div>
